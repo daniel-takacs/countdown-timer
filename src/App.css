@@ -5,13 +5,17 @@
 .container {
   display: flex;
   justify-content: center;
-  height: 100vh;
-  align-items: center; 
+  flex-wrap: wrap; 
+  
 }
-ul {
-  display: flex;
-  list-style: none;
+.container > div {
+  padding: 50px;
+  
 }
-li {
-  margin: 15px;
+p {
+  font-size: 5rem;
+  margin-bottom: 15px;
+}
+span {
+  font-size: 1rem;
 }

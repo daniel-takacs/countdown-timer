@@ -4,7 +4,7 @@ import './App.css';
 
 function CountDown() {
 
-    const [getSeconds, showSeconds] = useState('')
+    const [Timer, showTimer] = useState('')
 
     const newDate = "March 1 2021"
     const timeNow = new Date();
@@ -14,25 +14,25 @@ function CountDown() {
     const secondsLeft = Math.floor((targetDate - timeNow) / 1000)
 
     const days = Math.floor((secondsLeft / 3600) / 24 ) 
-    const hours = Math.floor(secondsLeft / 3600)
-    const minutes = Math.floor(secondsLeft / 60)
+    const hours = Math.floor((secondsLeft / 3600) % 24) 
+    const minutes = Math.floor((secondsLeft / 60) % 60)
+    const seconds = Math.floor((secondsLeft % 60))
+
     
     //console.log(seconds)
     useEffect(()=> {
         const interval = setInterval(()=> {
-            showSeconds(()=> days)
+            showTimer(()=> secondsLeft)
         }, 1000);
         return ()=> clearInterval(interval)
     })
 
     return (
         <div className="container">
-            <ul>
-                <li>Days</li>
-                <li>Hours</li>
-                <li>Minutes</li>
-                <li>{getSeconds}</li>
-            </ul>
+                <div className="days"><p>{days}</p><span>days</span></div>
+                <div className="hours"><p>{hours}</p><span>hours</span></div>
+                <div className="minutes"><p>{minutes}</p><span>minutes</span></div>
+                <div className="seconds"><p>{seconds}</p><span>seconds</span></div>
         </div>
     )
 }
